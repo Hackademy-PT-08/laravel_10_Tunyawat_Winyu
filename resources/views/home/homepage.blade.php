@@ -12,7 +12,7 @@
                         <img src="{{ asset('storage/' . $article->img)}}" alt="{{ $article->title }}" class="img-responsive">
                     @endif
                     <div class="card-body">
-                        <h5 class="card-title">{{$article->title}}</h5>
+                        <h5 class="card-title" value>{{$article->title}}</h5>
                         <p class="card-text">{{$article->content}}</p>
                         <p class="card-text">{{$article->tag}}</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleRequest;
 
 class AddNewPostController extends Controller
 
@@ -12,7 +13,7 @@ class AddNewPostController extends Controller
         return view('/addNewPost/addnewpost');
     }
 
-    public function store(Request $request){
+    public function store(StoreArticleRequest $request){
 
         $imgId = uniqid();
 
