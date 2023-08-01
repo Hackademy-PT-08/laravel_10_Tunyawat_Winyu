@@ -14,12 +14,20 @@ class AddNewPostController extends Controller
 
     public function store(Request $request){
 
+        $imgId = uniqid();
+
         $article = new Article;
 
         $article->title = $request->title;
         $article->content = $request->content;
-
+        $article->img = 'image-article-' . $imgId . '.' . $request->file('image')->extension();
+        $article->image_id = $imgId;
         $article->save();
+
+        
+        $filename = 'image-article-' . $imgId . '.' . $request->file('image')->extension();
+
+        $img = $request->file('image')->storeAs('public', $filename);
 
         return redirect('/');
         
