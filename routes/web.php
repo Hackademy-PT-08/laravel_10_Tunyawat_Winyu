@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddNewPostController;
+use Illuminate\Auth\Events\Verified;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,7 @@ Route::get('/',[HomeController::class, 'index'])->name('homepage');
 // Route Add New Post
 Route::get('/aggiungi', [AddNewPostController::class, 'create'])->name('addnewpost');
 
-Route::post('/aggiungi', [AddNewPostController::class, 'store']);
+Route::post('/aggiungi', [AddNewPostController::class, 'store'])->name('addNewPost.store');
+
+//Route Profile
+Route::get('/profile', [UserController::class, 'index'])->middleware(['verified'])->name('profile');

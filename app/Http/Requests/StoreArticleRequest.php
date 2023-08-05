@@ -24,7 +24,7 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' => 'required',
             'content' => 'required',
-            'img' => 'required'
+            'image' => 'required'
         ];
     }
 
@@ -34,7 +34,7 @@ class StoreArticleRequest extends FormRequest
         return [
             'title.required' => 'Titolo non inserito',
             'content.required' => 'Contenuto non inserito',
-            'img.required' => 'Immagine non caricata'
+            'image.required' => 'Immagine non caricata'
         ];
     }
 }

@@ -9,7 +9,7 @@
             <div class="col-4">
                 <div class="card my-3 mx-4" style="width: 18em; text-align: center;">
                     @if ($article->img !== '')
-                        <img src="{{ asset('storage/' . $article->image)}}" alt="{{ $article->title }}" class="img-responsive">
+                        <img src="{{ asset('storage/' . $article->img)}}" alt="{{ $article->title }}" class="img-responsive">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title" value>{{$article->title}}</h5>

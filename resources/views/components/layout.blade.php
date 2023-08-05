@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
-  @extends('css.maincss')
 
     {{-- NAVBAR --}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -21,28 +20,36 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('addnewpost')}}">Add new post</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Details
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Work with us</a></li>
-                  <li><a class="dropdown-item" href="#">Pattner</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
+              @if (auth()->check())
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('addnewpost')}}">Add new post</a>
+                </li>
+              @endif
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+            @if (auth()->check())
+              <li class="nav-item me-2" style="list-style: none;">
+                <a class="nav-link" href="{{ route('profile')}}">Users Profile</a>
+              </li>
+
+              <li class="nav-item me-2" style="list-style: none;">
+                <form action="/logout" method="post">
+                  @csrf
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+              </li>
+            @endif
+
+            @if (!auth()->check())
+            <li class="nav-item me-2" style="list-style: none;">
+              <a class="btn btn-primary" href="/login">Login</a>
+            </li>
+            <li class="nav-item me-2" style="list-style: none;">
+              <a class="btn btn-primary" href="/register">Sign In</a>
+            </li>
+            @endif
+            
+
           </div>
         </div>
       </nav>
